@@ -14,3 +14,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::post('jitenge-ussd', 'App\Http\Controllers\JitengeEvaluationUssdController@handleRequest');
+Route::group([
+    'namespace' => 'API',
+    'middleware' => 'api',
+], function () {
+    Route::get('resources/special', 'ResourcesController@get_special_resources');
+    Route::get('resources/special/{id}', 'ResourcesController@get_special_resource');
+});
